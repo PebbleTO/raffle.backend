@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="example">
+    <button id="sendExample" data-url="{{ path('example_api') }}">Get example</button>
+    <span></span>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    var token = localStorage.getItem('jwtToken');
+
+    $("#sendExample").click(function(e){
+    	$.ajax({
+  		  type: "GET",
+  		  url: $(this).data('url'),
+    	  headers: {
+  		    'Authorization': 'Bearer '+token
+          },
+  		  success: function(data) {
+    			$("#example").find("span").html(data.hello);
+  	 	  }
+  		});
+
+        e.preventDefault();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,6 @@
+login:
+    path: /api/login
+    defaults: { _controller: KinncjSecurityBundle:Security:login }
+
+login_check:
+    path: /api/login_check

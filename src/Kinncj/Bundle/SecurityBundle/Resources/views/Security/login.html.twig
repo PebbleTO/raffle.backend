@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData) }}</div>
+{% endif %}
+<h1 id="hello">PebbleTO</h1>
+<p>Login:</p>
+<div id="form">
+	<form id="loginForm" action="{{ path('login_check') }}" method="post">
+	    <label for="username">Username:</label>
+	    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+	    <label for="password">Password:</label>
+	    <input type="password" id="password" name="_password" />
+
+	    <input type="submit"/>
+	</form>
+</div>
+<div id="example">
+    <button id="sendExample" data-url="{{ path('example_api') }}">Get example</button>
+    <a id="goToExample" href="{{ path('example') }}">Go to headers example</button>
+    <span></span>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    var token = "";
+    $("#example").toggle();
+    $("#loginForm").submit(function(e){
+    	$.ajax({
+  		  type: "POST",
+  		  url: $(this).attr('action'),
+  		  data: $(this).serialize(),
+  		  success: function(data) {
+              token = data.token;
+
+              $('#form').toggle();
+              $("#example").toggle();
+  	 	  }
+  		});
+
+       e.preventDefault();
+    });
+
+    $("#sendExample").click(function(e){
+    	$.ajax({
+  		  type: "GET",
+  		  url: $(this).data('url'),
+  		  data: {bearer: token},
+  		  success: function(data) {
+    			$("#example").find("span").html(data.hello);
+  	 	  }
+  		});
+
+        e.preventDefault();
+    });
+
+    $("#goToExample").click(function(e){
+    	localStorage.setItem('jwtToken', token);
+    });
+</script>
+{% endblock %}

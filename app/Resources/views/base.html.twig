@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="manifest" href="/manifest.json">
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Web Starter Kit">
+        <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+        <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
+
+        <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+
+        <meta name="theme-color" content="#3372DF">
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    </head>
+    <body>
+        <header class="app-bar promote-layer">
+          <div class="app-bar-container">
+            <button class="menu"><img src="/images/hamburger.svg" alt="Menu"></button>
+            <h1 class="logo">Pebble <strong>Toronto</strong></h1>
+          </div>
+        </header>
+
+        <nav class="navdrawer-container promote-layer">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a target="_blank" href="http://www.meetup.com/PebbleTO/">Meetup</a></li>
+          </ul>
+        </nav>
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <script src="/scripts/main.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
