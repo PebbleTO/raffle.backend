@@ -1,9 +1,21 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
+    dms_meetup_api.client_factory.class: DMS\Bundle\MeetupApiBundle\Service\ClientFactory
+    dms_meetup_api.key_client.class: DMS\Service\Meetup\MeetupKeyAuthClient
+    dms_meetup_api.oauth_client.class: DMS\Service\Meetup\MeetupOAuthClient
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    dms_meetup_api.client_factory:
+        class: %dms_meetup_api.client_factory.class%
+        arguments:
+            session: @session
+            config: %dms_meetup_api.client.config%
+
+    dms_meetup_api.key_client:
+        class:            "%dms_meetup_api.key_client.class%"
+        factory_service:  dms_meetup_api.client_factory
+        factory_method:   getKeyAuthClient
+
+    dms_meetup_api.oauth_client:
+        class:            "%dms_meetup_api.oauth_client.class%"
+        factory_service:  dms_meetup_api.client_factory
+        factory_method:   getOauthClient

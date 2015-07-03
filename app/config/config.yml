@@ -64,6 +64,12 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+doctrine_cache:
+    providers:
+        default:
+            type: apc
+            namespace: default_namespace
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -78,3 +84,8 @@ lexik_jwt_authentication:
     public_key_path:  %kernel.root_dir%/var/jwt/public.pem    # ssh public key path
     pass_phrase:      '123456'                                      # ssh key pass phrase
     token_ttl:        86400                                   # token ttl - defaults to 86400
+
+# Meetup
+dms_meetup_api:
+    client:
+        key: '%dms_meetup_api_key%'

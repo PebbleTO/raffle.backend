@@ -16,6 +16,8 @@ parameters:
 
     admin_password: 123456
 
+    dms_meetup_api_key: 123456
+
     locale:            en
 
     # A secret key that's used to generate certain security-related tokens

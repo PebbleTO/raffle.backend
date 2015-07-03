@@ -21,7 +21,9 @@
         "sensio/distribution-bundle": "~3.0,>=3.0.12",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "lexik/jwt-authentication-bundle": "dev-master"
+        "lexik/jwt-authentication-bundle": "dev-master",
+	"dms/meetup-api-bundle": "~1",
+        "doctrine/doctrine-cache-bundle": "^1.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
